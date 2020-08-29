@@ -1,0 +1,97 @@
+<ng-container *ngIf="dataSource">
+  <table class="table table-bordered text-center w-100">
+    <thead>
+      <tr>
+        <!-- <th>Username</th>
+        <th class="disabled">Clan</th>
+        <th>Points</th>
+        <th>Number of villages</th> -->
+        <ng-container *ngFor="let column of dataSourceConfigs.columns">
+          <th *ngIf="!column.isHidden">
+            {{
+              column.caption != null
+                ? column.caption
+                : (column.dataKey | humanizeCamelCase)
+            }}
+          </th>
+        </ng-container>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rowData of dataSource.results">
+        <ng-container
+          *ngFor="let column of dataSourceConfigs.columns"
+          [ngSwitch]="column.includeHrefConfigs && 'hasHref'"
+        >
+          <ng-container *ngIf="!column.isHidden">
+            <td *ngSwitchCase="'hasHref'">
+              <a
+                [routerLink]="[
+                  '/' +
+                    column.includeHrefConfigs.redirectionUrl +
+                    '/' +
+                    rowData[column.includeHrefConfigs.parameterColumn]
+                ]"
+              >
+                <wo-datagrid-cell
+                  [column]="column"
+                  [cellData]="rowData[column.dataKey]"
+                >
+                  <ng-content
+                    *ngTemplateOutlet="
+                      cellTemplatesDict[column.dataKey];
+                      context: { rowData: rowData }
+                    "
+                  >
+                  </ng-content>
+                </wo-datagrid-cell>
+              </a>
+            </td>
+            <td *ngSwitchDefault>
+              <wo-datagrid-cell
+                [column]="column"
+                [cellData]="rowData[column.dataKey]"
+              >
+              </wo-datagrid-cell>
+              <ng-content
+                *ngTemplateOutlet="
+                  cellTemplatesDict[column.dataKey];
+                  context: { rowData: rowData }
+                "
+              >
+              </ng-content>
+            </td>
+          </ng-container>
+        </ng-container>
+      </tr>
+    </tbody>
+  </table>
+  <nav>
+    <ul class="pagination float-right">
+      <li
+        class="page-item"
+        [ngClass]="{ disabled: dataSource.previous == null }"
+      >
+        <a
+          class="page-link btn btn-primary"
+          (click)="service.paginationButtonClicked('prev')"
+        >
+          Previous
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link"
+          >{{ dataSource.currentPageNumber }} / {{ totalPages }}
+        </a>
+      </li>
+      <li class="page-item" [ngClass]="{ disabled: dataSource.next == null }">
+        <a
+          class="page-link btn btn-primary"
+          (click)="service.paginationButtonClicked('next')"
+        >
+          Next
+        </a>
+      </li>
+    </ul>
+  </nav>
+</ng-container>
