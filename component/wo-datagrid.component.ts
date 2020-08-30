@@ -16,6 +16,7 @@ import {
   WoDataSource,
 } from '../service/wo-datagrid.service';
 import { Subscription } from 'rxjs';
+import { PageEvent } from '@angular/material/paginator';
 
 @Directive({
   selector: '[cellTemplate]',
@@ -69,5 +70,13 @@ export class WoDatagridComponent
       return 1;
     }
     return Math.ceil(this.dataSource.count / this.dataSource.paginateBy);
+  }
+
+  pageEvent(e: PageEvent) {
+    if (e.pageIndex > e.previousPageIndex) {
+      this.service.paginationButtonClicked('next');
+    } else {
+      this.service.paginationButtonClicked('prev');
+    }
   }
 }

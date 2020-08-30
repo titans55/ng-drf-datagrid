@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { ReplaySubject } from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ReplaySubject } from 'rxjs';
 
 export class DatagridColumn {
   dataKey: string;
-  dataType?: "datetime" | "string" | "boolean" = "string";
+  dataType?: 'datetime' | 'string' | 'boolean' = 'string';
   caption?: string;
   includeHrefConfigs?: IncludeHrefConfigs;
   customCellTemplateEnabled?: boolean = false;
@@ -29,7 +29,6 @@ export class WoDataSource {
   previous?: string;
   results: Array<any>;
   paginateBy: number;
-  currentPageNumber: number;
 }
 
 @Injectable()
@@ -65,10 +64,10 @@ export class WoDatagridService {
     this.configs = configs;
   }
 
-  paginationButtonClicked(nextOrPrev: "next" | "prev"): void {
+  paginationButtonClicked(nextOrPrev: 'next' | 'prev'): void {
     this.fetchDataSource(
       this.configs,
-      nextOrPrev == "next" ? this._dataSource.next : this._dataSource.previous
+      nextOrPrev == 'next' ? this._dataSource.next : this._dataSource.previous
     );
   }
 }
