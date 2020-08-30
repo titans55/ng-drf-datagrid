@@ -9,16 +9,16 @@ import {
   AfterViewInit,
   QueryList,
   ContentChildren,
-} from "@angular/core";
+} from '@angular/core';
 import {
   WoDatagridService,
   DataSourceConfigs,
   WoDataSource,
-} from "../service/wo-datagrid.service";
-import { Subscription } from "rxjs";
+} from '../service/wo-datagrid.service';
+import { Subscription } from 'rxjs';
 
 @Directive({
-  selector: "[cellTemplate]",
+  selector: '[cellTemplate]',
 })
 export class CellTemplate {
   @Input() column: string;
@@ -26,9 +26,9 @@ export class CellTemplate {
 }
 
 @Component({
-  selector: "wo-datagrid",
-  templateUrl: "./wo-datagrid.component.html",
-  styleUrls: ["./wo-datagrid.component.css"],
+  selector: 'wo-datagrid',
+  templateUrl: './wo-datagrid.component.html',
+  styleUrls: ['./wo-datagrid.component.css'],
 })
 export class WoDatagridComponent
   implements OnInit, OnDestroy, AfterContentInit {
@@ -40,7 +40,7 @@ export class WoDatagridComponent
   private dataSourceSubscription: Subscription;
   public dataSource: WoDataSource;
 
-  constructor(private service: WoDatagridService) {}
+  constructor(public service: WoDatagridService) {}
 
   cellTemplatesDict = {};
 
