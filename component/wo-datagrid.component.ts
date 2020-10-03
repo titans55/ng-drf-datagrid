@@ -79,4 +79,9 @@ export class WoDatagridComponent
       this.service.paginationButtonClicked('prev');
     }
   }
+
+  refreshDatagrid(): void {
+    this.ngOnDestroy();
+    this.ngOnInit();
+  }
 }

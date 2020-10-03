@@ -17,6 +17,14 @@
             </th>
           </ng-container>
         </tr>
+        <tr *ngIf="dataSource.results.length == 0">
+          <th
+            [attr.colspan]="dataSourceConfigs.columns.length"
+            class="text-center"
+          >
+            {{ 'No results' | translate }}
+          </th>
+        </tr>
       </thead>
       <tbody>
         <tr *ngFor="let rowData of dataSource.results">
