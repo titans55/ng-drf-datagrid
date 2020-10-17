@@ -31,7 +31,6 @@ export class WoDataSource {
   paginateBy: number;
 }
 
-@Injectable()
 export class WoDatagridService {
   private _dataSource: WoDataSource;
   public dataSource: ReplaySubject<WoDataSource> = new ReplaySubject(1);

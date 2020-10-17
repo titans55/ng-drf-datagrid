@@ -21,6 +21,6 @@ import { TranslateModule } from '@ngx-translate/core';
   ],
   declarations: [WoDatagridComponent, WoDatagridCellComponent, CellTemplate],
   exports: [WoDatagridComponent, CellTemplate],
-  providers: [WoDatagridService],
+  providers: [],
 })
 export class WoDatagridModule {}

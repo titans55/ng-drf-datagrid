@@ -17,6 +17,7 @@ import {
 } from '../service/wo-datagrid.service';
 import { Subscription } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
+import { HttpClient } from '@angular/common/http';
 
 @Directive({
   selector: '[cellTemplate]',
@@ -38,10 +39,13 @@ export class WoDatagridComponent
 
   @Input() dataSourceConfigs: DataSourceConfigs;
 
+  public service: WoDatagridService;
   private dataSourceSubscription: Subscription;
   public dataSource: WoDataSource;
 
-  constructor(public service: WoDatagridService) {}
+  constructor(private httpClient: HttpClient) {
+    this.service = new WoDatagridService(httpClient);
+  }
 
   cellTemplatesDict = {};
 
