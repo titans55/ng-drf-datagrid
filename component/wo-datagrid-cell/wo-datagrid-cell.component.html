@@ -3,7 +3,7 @@
   [ngSwitch]="column.dataType"
 >
   <ng-container *ngSwitchCase="'datetime'">
-    {{ cellData | date: "dd.MM.yyyy hh:mm:ss" }}
+    {{ cellData | date: "dd.MM.yyyy hh:mm" }}
   </ng-container>
   <ng-container *ngSwitchCase="'boolean'">
     <input type="checkbox" [checked]="cellData" readonly />
