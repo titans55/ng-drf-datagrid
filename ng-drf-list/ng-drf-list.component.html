@@ -1,0 +1,13 @@
+<mat-list *ngIf="dataSource && dataSource.results && rowTemplate">
+  <ng-container *ngFor="let rowData of dataSource.results">
+      <ng-content *ngTemplateOutlet="rowTemplate; context: {rowData: rowData}">
+      </ng-content>
+  </ng-container>
+</mat-list>
+<mat-paginator
+  *ngIf="dataSource && dataSource.results"
+  [length]="dataSource.count"
+  [pageSize]="dataSource.paginateBy"
+  (page)="pageEvent($event)"
+>
+</mat-paginator>
