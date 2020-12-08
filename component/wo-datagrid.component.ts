@@ -14,6 +14,13 @@ export class CellTemplate {
   constructor(public template: TemplateRef<any>) {}
 }
 
+@Directive({
+  selector: '[cardViewRowTemplate]',
+})
+export class CardViewRowTemplate {
+  constructor(public template: TemplateRef<any>) {}
+}
+
 @Component({
   selector: 'wo-datagrid',
   templateUrl: './wo-datagrid.component.html',
@@ -22,7 +29,12 @@ export class CellTemplate {
 export class WoDatagridComponent extends BaseDrfDatasourceComponent 
   implements OnInit, OnDestroy, AfterContentInit {
   @ContentChildren(CellTemplate)
-  cellTemplates: QueryList<CellTemplate>;
+  private cellTemplates: QueryList<CellTemplate>;
+
+  @ContentChildren(CardViewRowTemplate)
+  private cardViewRowTemplates: QueryList<CardViewRowTemplate>;
+  cardViewTemplate: CardViewRowTemplate
+
 
   cellTemplatesDict = {};
 
@@ -31,5 +43,12 @@ export class WoDatagridComponent extends BaseDrfDatasourceComponent
     this.cellTemplates.forEach((cellTemplate) => {
       this.cellTemplatesDict[cellTemplate.column] = cellTemplate.template;
     });
+    this.cardViewRowTemplates.forEach((cardViewTemplate) => {
+      this.cardViewTemplate = cardViewTemplate
+    });
+  }
+
+  isMobile(): boolean {
+    return window.matchMedia('screen and (max-width: 990px)').matches;
   }
 }

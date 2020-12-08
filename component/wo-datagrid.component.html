@@ -1,12 +1,8 @@
 <ng-container *ngIf="dataSource">
-  <div class="col">
+  <div class="col" *ngIf="!isMobile()">
     <table class="table responsive-table table-bordered text-center w-100">
       <thead>
         <tr>
-          <!-- <th>Username</th>
-          <th class="disabled">Clan</th>
-          <th>Points</th>
-          <th>Number of villages</th> -->
           <ng-container *ngFor="let column of dataSourceConfigs.columns">
             <th *ngIf="!column.isHidden">
               {{
@@ -75,6 +71,58 @@
         </tr>
       </tbody>
     </table>
+  </div>
+  <div class="row" *ngIf="isMobile()">
+    <div class="col-sm-12 col-md-6" *ngFor="let rowData of dataSource.results">
+      <mat-card class="m-1 p-1 pb-2">
+        <ng-container
+          *ngTemplateOutlet="
+            cardViewTemplate ? customCardViewTemplate : defaultCardView;
+            context: { rowData: rowData }
+          "
+        ></ng-container>
+        <!-- default card list element -->
+        <ng-template #defaultCardView>
+          <mat-list>
+            <ng-container *ngFor="let column of dataSourceConfigs.columns">
+              <mat-list-item>
+                <span
+                  class="mb-md-1"
+                  *ngIf="!column.customCellTemplateEnabled && !column.isHidden"
+                >
+                  <b class="mr-1">
+                    {{
+                      column.caption != null
+                        ? column.caption
+                        : (column.dataKey | humanizeCamelCase) + ':'
+                    }}
+                  </b>
+                  {{ rowData[column.dataKey] }}
+                </span>
+                <ng-container *ngIf="column.customCellTemplateEnabled">
+                  <ng-content
+                    *ngTemplateOutlet="
+                      cellTemplatesDict[column.dataKey];
+                      context: { rowData: rowData }
+                    "
+                  >
+                  </ng-content>
+                </ng-container>
+              </mat-list-item>
+            </ng-container>
+          </mat-list>
+        </ng-template>
+        <!-- default card list element ends -->
+        <!-- custom card list element -->
+        <ng-template #customCardViewTemplate>
+          <ng-content
+            *ngTemplateOutlet="cardViewTemplate; context: { rowData: rowData }"
+          >
+          </ng-content>
+        </ng-template>
+      </mat-card>
+      <!-- custom card list element ends-->
+    </div>
   </div>
   <div class="col">
     <mat-paginator
