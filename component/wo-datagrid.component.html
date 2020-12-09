@@ -24,13 +24,14 @@
       </thead>
       <tbody>
         <tr *ngFor="let rowData of dataSource.results">
-          <ng-container
-            *ngFor="let column of dataSourceConfigs.columns"
-            [ngSwitch]="column.includeHrefConfigs && 'hasHref'"
-          >
+          <ng-container *ngFor="let column of dataSourceConfigs.columns">
             <ng-container *ngIf="!column.isHidden">
-              <td *ngSwitchCase="'hasHref'">
+              <td>
                 <a
+                  *ngIf="
+                    column.includeHrefConfigs;
+                    else dataGridCellValueTemplate
+                  "
                   [routerLink]="[
                     '/' +
                       column.includeHrefConfigs.redirectionUrl +
@@ -38,34 +39,32 @@
                       rowData[column.includeHrefConfigs.parameterColumn]
                   ]"
                 >
-                  <wo-datagrid-cell
-                    [column]="column"
-                    [cellData]="rowData[column.dataKey]"
-                  >
-                    <ng-content
-                      *ngTemplateOutlet="
-                        cellTemplatesDict[column.dataKey];
-                        context: { rowData: rowData }
-                      "
-                    >
-                    </ng-content>
-                  </wo-datagrid-cell>
+                  <ng-container
+                    *ngTemplateOutlet="
+                      dataGridCellValueTemplate;
+                      context: {
+                        column: column,
+                        rowData: rowData
+                      }
+                    "
+                  ></ng-container>
                 </a>
               </td>
-              <td *ngSwitchDefault>
+
+              <ng-template #dataGridCellValueTemplate>
                 <wo-datagrid-cell
                   [column]="column"
                   [cellData]="rowData[column.dataKey]"
                 >
+                  <ng-content
+                    *ngTemplateOutlet="
+                      cellTemplatesDict[column.dataKey];
+                      context: { rowData: rowData }
+                    "
+                  >
+                  </ng-content>
                 </wo-datagrid-cell>
-                <ng-content
-                  *ngTemplateOutlet="
-                    cellTemplatesDict[column.dataKey];
-                    context: { rowData: rowData }
-                  "
-                >
-                </ng-content>
-              </td>
+              </ng-template>
             </ng-container>
           </ng-container>
         </tr>
@@ -97,7 +96,22 @@
                         : (column.dataKey | humanizeCamelCase) + ':'
                     }}
                   </b>
-                  {{ rowData[column.dataKey] }}
+                  <a
+                    *ngIf="column.includeHrefConfigs; else rowDataValueTemplate"
+                    [routerLink]="[
+                      '/' +
+                        column.includeHrefConfigs.redirectionUrl +
+                        '/' +
+                        rowData[column.includeHrefConfigs.parameterColumn]
+                    ]"
+                  >
+                    <ng-container
+                      *ngTemplateOutlet="rowDataValueTemplate"
+                    ></ng-container>
+                  </a>
+                  <ng-template #rowDataValueTemplate>
+                    {{ rowData[column.dataKey] }}
+                  </ng-template>
                 </span>
                 <ng-container *ngIf="column.customCellTemplateEnabled">
                   <ng-content
