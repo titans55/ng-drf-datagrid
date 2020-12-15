@@ -4,13 +4,13 @@ import {
   WoDatagridComponent,
   CellTemplate,
 } from './component/wo-datagrid.component';
-import { WoDatagridService } from './service/wo-datagrid.service';
 import { WoPipesModule } from './pipes/wo-pipes.module';
 import { RouterModule } from '@angular/router';
 import { WoDatagridCellComponent } from './component/wo-datagrid-cell/wo-datagrid-cell.component';
 import { MaterialModule } from '@app/material.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { NgDrfListModule } from './ng-drf-list/ng-drf-list.module';
+import { WoLoaderComponent } from './component/wo-loader/wo-loader.component';
 
 @NgModule({
   imports: [
@@ -21,7 +21,7 @@ import { NgDrfListModule } from './ng-drf-list/ng-drf-list.module';
     TranslateModule,
     NgDrfListModule
   ],
-  declarations: [WoDatagridComponent, WoDatagridCellComponent, CellTemplate],
+  declarations: [WoDatagridComponent, WoDatagridCellComponent, CellTemplate, WoLoaderComponent],
   exports: [WoDatagridComponent, CellTemplate, NgDrfListModule],
   providers: [],
 })

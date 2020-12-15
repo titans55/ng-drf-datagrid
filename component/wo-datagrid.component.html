@@ -1,3 +1,6 @@
+<div class="col text-center mt-3" *ngIf="!dataSource || !dataSource.results "> 
+  <wo-loader [isLoading]="true" size="1.5"></wo-loader>
+</div>
 <ng-container *ngIf="dataSource">
   <div class="col" *ngIf="!isMobile()">
     <table class="table responsive-table table-bordered text-center w-100">
