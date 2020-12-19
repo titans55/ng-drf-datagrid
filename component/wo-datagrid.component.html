@@ -7,7 +7,7 @@
       <thead>
         <tr>
           <ng-container *ngFor="let column of dataSourceConfigs.columns">
-            <th *ngIf="!column.isHidden">
+            <th *ngIf="!column.isHidden" translate>
               {{
                 column.caption != null
                   ? column.caption
@@ -92,11 +92,11 @@
                   class="mb-md-1"
                   *ngIf="!column.customCellTemplateEnabled && !column.isHidden"
                 >
-                  <b class="mr-1">
+                  <b class="mr-1" translate>
                     {{
-                      column.caption != null
+                      (column.caption | translate) != null
                         ? column.caption
-                        : (column.dataKey | humanizeCamelCase) + ':'
+                        : (column.dataKey | humanizeCamelCase | translate) + ':'
                     }}
                   </b>
                   <a
