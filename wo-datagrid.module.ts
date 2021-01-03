@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   WoDatagridComponent,
   CellTemplate,
+  CardViewRowTemplate,
 } from './component/wo-datagrid.component';
 import { WoPipesModule } from './pipes/wo-pipes.module';
 import { RouterModule } from '@angular/router';
@@ -21,8 +22,8 @@ import { WoLoaderComponent } from './component/wo-loader/wo-loader.component';
     TranslateModule,
     NgDrfListModule
   ],
-  declarations: [WoDatagridComponent, WoDatagridCellComponent, CellTemplate, WoLoaderComponent],
-  exports: [WoDatagridComponent, CellTemplate, NgDrfListModule],
+  declarations: [WoDatagridComponent, WoDatagridCellComponent, CellTemplate, CardViewRowTemplate, WoLoaderComponent],
+  exports: [WoDatagridComponent, CellTemplate, CardViewRowTemplate, NgDrfListModule],
   providers: [],
 })
 export class WoDatagridModule {}

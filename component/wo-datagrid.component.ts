@@ -33,7 +33,7 @@ export class WoDatagridComponent extends BaseDrfDatasourceComponent
 
   @ContentChildren(CardViewRowTemplate)
   private cardViewRowTemplates: QueryList<CardViewRowTemplate>;
-  cardViewTemplate: CardViewRowTemplate
+  cardViewTemplate: TemplateRef<any>
 
 
   cellTemplatesDict = {};
@@ -44,7 +44,7 @@ export class WoDatagridComponent extends BaseDrfDatasourceComponent
       this.cellTemplatesDict[cellTemplate.column] = cellTemplate.template;
     });
     this.cardViewRowTemplates.forEach((cardViewTemplate) => {
-      this.cardViewTemplate = cardViewTemplate
+      this.cardViewTemplate = cardViewTemplate.template
     });
   }
 

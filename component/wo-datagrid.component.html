@@ -21,7 +21,7 @@
             [attr.colspan]="dataSourceConfigs.columns.length"
             class="text-center"
           >
-            {{ 'No results' | translate }}
+            {{ 'No Results' | translate }}
           </th>
         </tr>
       </thead>
@@ -75,6 +75,9 @@
     </table>
   </div>
   <div class="row" *ngIf="isMobile()">
+    <div class="col-12 text-center mt-3" *ngIf="dataSource.results.length == 0">
+      {{ 'No Results' | translate }}
+    </div>
     <div class="col-sm-12 col-md-6" *ngFor="let rowData of dataSource.results">
       <mat-card class="m-1 p-1 pb-2">
         <ng-container
