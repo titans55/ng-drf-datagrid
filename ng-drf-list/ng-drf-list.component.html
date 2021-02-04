@@ -1,7 +1,7 @@
 <mat-list *ngIf="dataSource && dataSource.results && rowTemplate">
   <ng-container *ngFor="let rowData of dataSource.results">
-      <ng-content *ngTemplateOutlet="rowTemplate; context: {rowData: rowData}">
-      </ng-content>
+    <ng-content *ngTemplateOutlet="rowTemplate; context: { rowData: rowData }">
+    </ng-content>
   </ng-container>
 </mat-list>
 <mat-paginator

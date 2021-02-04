@@ -1,8 +1,13 @@
 import {
-  AfterContentInit, Component,
-  ContentChildren, Directive, Input,
-  OnDestroy, OnInit,
-  QueryList, TemplateRef
+  AfterContentInit,
+  Component,
+  ContentChildren,
+  Directive,
+  Input,
+  OnDestroy,
+  OnInit,
+  QueryList,
+  TemplateRef,
 } from '@angular/core';
 import { BaseDrfDatasourceComponent } from '../base/base-drf-datasource.component';
 
@@ -26,15 +31,14 @@ export class CardViewRowTemplate {
   templateUrl: './wo-datagrid.component.html',
   styleUrls: ['./wo-datagrid.component.css'],
 })
-export class WoDatagridComponent extends BaseDrfDatasourceComponent 
+export class WoDatagridComponent extends BaseDrfDatasourceComponent
   implements OnInit, OnDestroy, AfterContentInit {
   @ContentChildren(CellTemplate)
   private cellTemplates: QueryList<CellTemplate>;
 
   @ContentChildren(CardViewRowTemplate)
   private cardViewRowTemplates: QueryList<CardViewRowTemplate>;
-  cardViewTemplate: TemplateRef<any>
-
+  cardViewTemplate: TemplateRef<any>;
 
   cellTemplatesDict = {};
 
@@ -44,7 +48,7 @@ export class WoDatagridComponent extends BaseDrfDatasourceComponent
       this.cellTemplatesDict[cellTemplate.column] = cellTemplate.template;
     });
     this.cardViewRowTemplates.forEach((cardViewTemplate) => {
-      this.cardViewTemplate = cardViewTemplate.template
+      this.cardViewTemplate = cardViewTemplate.template;
     });
   }
 

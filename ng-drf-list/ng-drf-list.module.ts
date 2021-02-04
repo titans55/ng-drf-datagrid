@@ -4,11 +4,8 @@ import { NgDrfListComponent, RowTemplate } from './ng-drf-list.component';
 import { MaterialModule } from '@app/material.module';
 
 @NgModule({
-  imports: [
-    CommonModule, MaterialModule
-  ],
+  imports: [CommonModule, MaterialModule],
   declarations: [NgDrfListComponent, RowTemplate],
-  exports: [NgDrfListComponent, RowTemplate]
-
+  exports: [NgDrfListComponent, RowTemplate],
 })
-export class NgDrfListModule { }
+export class NgDrfListModule {}

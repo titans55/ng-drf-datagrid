@@ -1,9 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Input, OnDestroy, OnInit } from '@angular/core';
+import { Input, OnDestroy, OnInit, Directive } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
-import { DataSourceConfigs, WoDatagridService, WoDataSource } from '../service/wo-datagrid.service';
+import {
+  DataSourceConfigs,
+  WoDatagridService,
+  WoDataSource,
+} from '../service/wo-datagrid.service';
 
+@Directive()
 export class BaseDrfDatasourceComponent implements OnInit, OnDestroy {
   @Input() dataSourceConfigs: DataSourceConfigs;
 

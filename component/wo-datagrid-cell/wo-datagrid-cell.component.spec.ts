@@ -11,9 +11,8 @@ describe('WoDatagridCellComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WoDatagridCellComponent ]
-    })
-    .compileComponents();
+      declarations: [WoDatagridCellComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

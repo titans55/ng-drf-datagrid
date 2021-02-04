@@ -20,10 +20,21 @@ import { WoLoaderComponent } from './component/wo-loader/wo-loader.component';
     MaterialModule,
     RouterModule,
     TranslateModule,
-    NgDrfListModule
+    NgDrfListModule,
   ],
-  declarations: [WoDatagridComponent, WoDatagridCellComponent, CellTemplate, CardViewRowTemplate, WoLoaderComponent],
-  exports: [WoDatagridComponent, CellTemplate, CardViewRowTemplate, NgDrfListModule],
+  declarations: [
+    WoDatagridComponent,
+    WoDatagridCellComponent,
+    CellTemplate,
+    CardViewRowTemplate,
+    WoLoaderComponent,
+  ],
+  exports: [
+    WoDatagridComponent,
+    CellTemplate,
+    CardViewRowTemplate,
+    NgDrfListModule,
+  ],
   providers: [],
 })
 export class WoDatagridModule {}

@@ -6,7 +6,7 @@ import { WoDatagridService } from './wo-datagrid.service';
 describe('Service: WoDatagrid', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [WoDatagridService]
+      providers: [WoDatagridService],
     });
   });
 

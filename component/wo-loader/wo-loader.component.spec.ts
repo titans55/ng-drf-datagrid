@@ -11,9 +11,8 @@ describe('WoLoaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WoLoaderComponent ]
-    })
-    .compileComponents();
+      declarations: [WoLoaderComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
