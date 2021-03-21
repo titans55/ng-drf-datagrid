@@ -21,6 +21,7 @@ export class BaseDrfDatasourceComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    console.log("current datasource configs", this.dataSourceConfigs)
     this.service.fetchDataSource(this.dataSourceConfigs);
     this.dataSourceSubscription = this.service.dataSource.subscribe(
       (dataSource) => {

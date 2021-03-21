@@ -23,7 +23,16 @@ export interface DataSourceConfigs {
   columns: Array<DatagridColumn>;
 }
 
-export class WoDataSource {
+export class SeoDataMixin {
+  currentQuerystring: string;
+  seoParams?: {
+    title: string;
+    keywords: string;
+    description: string;
+  }
+}
+
+export class WoDataSource extends SeoDataMixin{
   count: number;
   next?: string;
   previous?: string;
