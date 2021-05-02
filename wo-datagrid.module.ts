@@ -8,10 +8,9 @@ import {
 import { WoPipesModule } from './pipes/wo-pipes.module';
 import { RouterModule } from '@angular/router';
 import { WoDatagridCellComponent } from './component/wo-datagrid-cell/wo-datagrid-cell.component';
-import { MaterialModule } from '@app/material.module';
-import { TranslateModule } from '@ngx-translate/core';
 import { NgDrfListModule } from './ng-drf-list/ng-drf-list.module';
 import { WoLoaderComponent } from './component/wo-loader/wo-loader.component';
+import { MaterialModule } from '../material.module';
 
 @NgModule({
   imports: [
@@ -19,7 +18,6 @@ import { WoLoaderComponent } from './component/wo-loader/wo-loader.component';
     WoPipesModule,
     MaterialModule,
     RouterModule,
-    TranslateModule,
     NgDrfListModule,
   ],
   declarations: [

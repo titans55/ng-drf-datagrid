@@ -7,7 +7,7 @@
       <thead>
         <tr>
           <ng-container *ngFor="let column of dataSourceConfigs.columns">
-            <th *ngIf="!column.isHidden" translate>
+            <th *ngIf="!column.isHidden">
               {{
                 column.caption != null
                   ? column.caption
@@ -21,7 +21,7 @@
             [attr.colspan]="dataSourceConfigs.columns.length"
             class="text-center"
           >
-            {{ 'No Results' | translate }}
+            {{ 'No Results' }}
           </th>
         </tr>
       </thead>
@@ -76,7 +76,7 @@
   </div>
   <div class="row" *ngIf="isMobile()">
     <div class="col-12 text-center mt-3" *ngIf="dataSource.results.length == 0">
-      {{ 'No Results' | translate }}
+      {{ 'No Results' }}
     </div>
     <div class="col-sm-12 col-md-6" *ngFor="let rowData of dataSource.results">
       <mat-card class="m-1 p-1 pb-2">
@@ -95,11 +95,11 @@
                   class="mb-md-1"
                   *ngIf="!column.customCellTemplateEnabled && !column.isHidden"
                 >
-                  <b class="mr-1" translate>
+                  <b class="mr-1">
                     {{
-                      (column.caption | translate) != null
+                      (column.caption) != null
                         ? column.caption
-                        : (column.dataKey | humanizeCamelCase | translate) + ':'
+                        : (column.dataKey | humanizeCamelCase) + ':'
                     }}
                   </b>
                   <a

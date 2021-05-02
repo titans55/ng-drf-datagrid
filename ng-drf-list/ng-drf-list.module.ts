@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgDrfListComponent, RowTemplate } from './ng-drf-list.component';
-import { MaterialModule } from '@app/material.module';
+import { MaterialModule } from '../../material.module';
 
 @NgModule({
   imports: [CommonModule, MaterialModule],
